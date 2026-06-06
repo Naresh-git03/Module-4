@@ -1,28 +1,36 @@
-# Exception Handling in Python: Avoiding Index Errors
+# File Handling in Python: Count Lines Not Starting with 'T'
 
 ## 🎯 Aim
-To write a Python program that handles an **IndexError** when trying to access an element beyond the available range of a list.
+To write a Python program that counts the number of lines in a text file `story.txt` that do **not** start with the alphabet `'T'`.
 
 ## 🧠 Algorithm
-1. Define a list `list1` with some integer elements.
-2. Use a **try-except** block:
-   - In the `try` block, attempt to access an index that is out of range (e.g., `list1[5]`).
-   - In the `except` block, catch the error and print a custom message `"You're out of list range"`.
-3. Print the result based on whether the index access succeeds or fails.
+1. Open the file `story.txt` in **read mode**.
+2. Initialize a counter `count` to zero.
+3. Iterate through each line of the file:
+   - Check if the first character of the line is **not** `'T'`.
+   - If the line does not start with `'T'`, increment the `count` by 1.
+4. After processing all lines, print the `count` value, which represents the number of lines that do not start with `'T'`.
 
 ## 🧾 Program
 ```
-list1 = [10, 20, 30, 40]
-
 try:
-    print(list1[5])  # Invalid index
-except IndexError:
-    print("You're out of list range")
+    with open("story.txt", "r") as file:
+        count = 0
+        for line in file:
+            line = line.strip()
+            if line and line[0] != 'T':
+                count += 1
+
+    print("Number of lines not starting with 'T':", count)
+
+except FileNotFoundError:
+    print("File not found! Please check the file name and location.")
 ```
 
 ## Output
-<img width="575" height="250" alt="image" src="https://github.com/user-attachments/assets/0d8324e8-5ea3-4c95-b809-e1195219db0d" />
+<img width="737" height="314" alt="image" src="https://github.com/user-attachments/assets/7b78334a-eead-46ba-9704-4be888d180b2" />
 
 
 ## Result
-The program handles the IndexError and prints a message when the index is out of range.
+code executed well as per the question.
+
